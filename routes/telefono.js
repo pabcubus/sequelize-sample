@@ -12,9 +12,24 @@ router.use(function(req, res, next) {
 	next();
 });
 
-router.get('/test', function(req, res) {
+router.get('/getAll', function(req, res) {
 	connection.sync().then(function() {
 		Telefono.findAll().then(function(telefonos){
+			return res.json(telefonos);
+		});
+	});
+});
+
+router.get('/:id', function(req, res) {
+	var id = req.params.id;
+
+	connection.sync().then(function() {
+		Telefono.findAll({
+			where: {
+				'id': id
+			}
+		})
+		.then(function(telefonos){
 			return res.json(telefonos);
 		});
 	});
