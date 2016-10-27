@@ -3,23 +3,10 @@ var express = require('express');
 var _ = require('lodash');
 var router = express.Router();
 var Sequelize = require('sequelize');
-
-var Telefono = null;
-var connection = null;
+var connection;
 
 router.use(function(req, res, next) {
-
-	if (!Telefono) {
-		connection = req.app.get('connection');
-
-		Telefono = connection.define('telefono', {
-			cliente: Sequelize.BIGINT,
-			telefono: Sequelize.STRING
-		}, {
-			freezeTableName: true,
-		});
-	}
-
+	connection = req.app.get('connection');
 	res.header("Access-Control-Allow-Origin", "*");
 	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 	next();

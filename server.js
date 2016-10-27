@@ -1,11 +1,11 @@
 // Dependencies
-var express = require('express');
-var bodyParser = require('body-parser');
+var express			= require('express');
+var bodyParser 		= require('body-parser');
 
 var app = express();
 app.use(bodyParser.json());
 
-// Routes
+// Set the params for the ORM (Sequelize)
 var Sequelize = require('sequelize');
 var propertiesReader = require('properties-reader');
 
@@ -20,9 +20,13 @@ var connection = new Sequelize(connectionString, {
 		timestamps: false
 	}
 });
-app.set('connection', connection);
-app.set('test', '1234');
 
+// Configure the ORM
+require('./persistence/config').start(Sequelize, connection);
+
+app.set('connection', connection);
+
+// Routes
 app.use('/api/cliente', require('./routes/cliente'));
 app.use('/api/telefono', require('./routes/telefono'));
 
