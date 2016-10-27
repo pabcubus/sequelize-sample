@@ -1,11 +1,9 @@
 function init(Sequelize, connection){
-	Cliente = connection.define('cliente', {
+	Persona = connection.define('persona', {
 		nombre: Sequelize.STRING,
 		apellido: Sequelize.STRING,
-		telefono: Sequelize.INTEGER,
 		edad: Sequelize.INTEGER,
-		precio: Sequelize.INTEGER,
-		estrato: Sequelize.INTEGER
+		direccion: Sequelize.STRING
 	}, {
 		freezeTableName: true,
 	});

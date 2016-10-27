@@ -27,7 +27,7 @@ require('./persistence/config').start(Sequelize, connection);
 app.set('connection', connection);
 
 // Routes
-app.use('/api/cliente', require('./routes/cliente'));
+app.use('/api/persona', require('./routes/persona'));
 app.use('/api/telefono', require('./routes/telefono'));
 
 // Start server

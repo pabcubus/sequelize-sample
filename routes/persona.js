@@ -14,8 +14,8 @@ router.use(function(req, res, next) {
 
 router.get('/test', function(req, res) {
 	connection.sync().then(function() {
-		Cliente.findAll({ include : Telefono }).then(function(clientes){
-			return res.json(clientes);
+		Persona.findAll({ include : Telefono }).then(function(personas){
+			return res.json(personas);
 		});
 	});
 });
