@@ -13,6 +13,7 @@
     "body-parser": "^1.15.0",
     "express": "^4.13.4",
     "lodash": "^4.5.1",
+    "orm": "^3.1.0",
     "pg": "^4.5.6",
     "pg-hstore": "^2.3.2",
     "properties-reader": "0.0.15",

@@ -1,12 +1,11 @@
-function init(Sequelize, connection){
-	Persona = connection.define('persona', {
-		nombre: Sequelize.STRING,
-		apellido: Sequelize.STRING,
-		edad: Sequelize.INTEGER,
-		direccion: Sequelize.STRING
-	}, {
-		freezeTableName: true,
-	});
+function init(db, models) {
+	var PersonaModel = {
+		nombre: String,
+		apellido: String
+	};
+
+	var Persona = db.define('persona', PersonaModel);
+	return Persona;
 }
 
 module.exports.init = init;

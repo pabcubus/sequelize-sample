@@ -8,20 +8,22 @@ CREATE TABLE persona
 	CONSTRAINT persona_pk PRIMARY KEY (id)
 );
 
-insert into persona (nombre, apellido, edad, direccion) values ('Pablo', 'Bassil', '31', 'Calle 08 #75-176');
-insert into persona (nombre, apellido, edad, direccion) values ('Camilo', 'Bassil', '24', 'Calle 08 #75-176');
-insert into persona (nombre, apellido, edad, direccion) values ('Candelaria', 'Amin', '40', 'Carrera 44 #85-26');
-
 CREATE TABLE telefono
 (
 	id serial NOT NULL,
-	persona serial NOT NULL,
+	persona integer,
 	telefono character varying(100),
 	CONSTRAINT telefono_pk PRIMARY KEY (id),
 	CONSTRAINT telefono_fk FOREIGN KEY (persona)
 		REFERENCES persona (id) MATCH SIMPLE
 		ON UPDATE NO ACTION ON DELETE NO ACTION
 );
+
+
+insert into persona (nombre, apellido, edad, direccion) values ('Pablo', 'Bassil', '31', 'Calle 08 #75-176');
+insert into persona (nombre, apellido, edad, direccion) values ('Camilo', 'Bassil', '24', 'Calle 08 #75-176');
+insert into persona (nombre, apellido, edad, direccion) values ('Candelaria', 'Amin', '40', 'Carrera 44 #85-26');
+
 
 insert into telefono (persona, telefono) values (1, '3002781650');
 insert into telefono (persona, telefono) values (1, '3856678');

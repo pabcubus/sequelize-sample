@@ -1,10 +1,10 @@
-function init(Sequelize, connection){
-	Telefono = connection.define('telefono', {
-		persona: Sequelize.BIGINT,
-		telefono: Sequelize.STRING
-	}, {
-		freezeTableName: true,
-	});
+function init(db, models) {
+	var TelefonoModel = {
+		telefono: String
+	};
+
+	var Telefono = db.define('telefono', TelefonoModel);
+	return Telefono;
 }
 
 module.exports.init = init;
